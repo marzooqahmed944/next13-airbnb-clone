@@ -1,4 +1,4 @@
-'use-client';
+"use-client";
 
 import { FC, MouseEvent } from "react";
 import { IconType } from "react-icons/lib";
@@ -33,7 +33,7 @@ const Button: FC<IButtonProps> = ({
         small ? "font-light" : "font-semibold"
       } ${small ? "border-[1px]" : "border-2"}`}
     >
-      {Icon && <Icon className="absolute left-4 top-3" />}
+      {Icon && <Icon size={24} className="absolute left-4 top-3" />}
       {label}
     </button>
   );
