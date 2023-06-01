@@ -5,20 +5,13 @@ import Avatar from "../Avatar";
 import { Fragment, useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
-
-const MenuItems = [
-  {
-    label: "Login",
-  },
-  {
-    label: "Sign Up",
-  },
-];
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 const UserMenu = () => {
   const handleClick = () => {};
 
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = useCallback(() => setIsOpen((prev) => !prev), [isOpen]);
@@ -46,11 +39,8 @@ const UserMenu = () => {
       {isOpen && (
         <div className="absolute right-0 top-12 w-[40vw] overflow-hidden rounded-xl bg-white text-sm shadow-md md:w-3/4">
           <div className="flex cursor-pointer flex-col">
-            {MenuItems.map((item, index) => (
-              <Fragment key={item.label + index}>
-                <MenuItem onClick={registerModal.onOpen} label={item.label} />
-              </Fragment>
-            ))}
+            <MenuItem onClick={loginModal.onOpen} label={"Login"} />
+            <MenuItem onClick={registerModal.onOpen} label={"Sign Up"} />
           </div>
         </div>
       )}
